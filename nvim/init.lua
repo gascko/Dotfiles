@@ -34,13 +34,17 @@ vim.opt.incsearch = true
 vim.cmd([[set nohlsearch]])
 
 -- Statusline
+vim.opt.showmode = true
 vim.opt.laststatus = 0
-
--- Completion
-vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
 -- Fold all files if possible
 vim.opt.foldmethod = "indent"
+
+-- Faster Diagnostics
+vim.opt.updatetime = 100
+
+-- Border on every floating window 
+vim.o.winborder = "rounded"
 
 -- ########## KEYMAPPINGS ##########
 
@@ -87,7 +91,8 @@ vim.keymap.set('n', '<C-n>', ':tabnew<CR>')
 -- ########## PLUGINS ##########
 
 vim.pack.add{
-  { src = 'https://github.com/neovim/nvim-lspconfig' },
+	{ src = "https://github.com/saghen/blink.cmp", version = "v1", name = "blink.cmp" },
+	{ src = 'https://github.com/neovim/nvim-lspconfig' },
 }
 
 -- ########## LSP ##########
@@ -98,7 +103,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(ev)
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
     if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_completion) then
-      --vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
       vim.keymap.set('n', 'gD', function()
           vim.lsp.buf.declaration()
       end)
@@ -118,14 +122,84 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
+require("blink.cmp").setup({
+	-- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
+	-- 'super-tab' for mappings similar to vscode (tab to accept)
+	-- 'enter' for enter to accept
+	-- 'none' for no mappings
+	--
+	-- All presets have the following mappings:
+	-- C-space: Open menu or open docs if already open
+	-- C-n/C-p or Up/Down: Select next/previous item
+	-- C-e: Hide menu
+	-- C-k: Toggle signature help (if signature.enabled = true)
+	--
+	-- See :h blink-cmp-config-keymap for defining your own keymap
+	keymap = {
+		-- Each keymap may be a list of commands and/or functions
+		preset = "enter",
+		-- Select completions
+		["<Up>"] = { "select_prev", "fallback" },
+		["<Down>"] = { "select_next", "fallback" },
+		["<Tab>"] = { "select_next", "fallback" },
+		["<S-Tab>"] = { "select_prev", "fallback" },
+		-- Scroll documentation
+		["<C-b>"] = { "scroll_documentation_up", "fallback" },
+		["<C-f>"] = { "scroll_documentation_down", "fallback" },
+		-- Show/hide signature
+		["<C-k>"] = { "show_signature", "hide_signature", "fallback" },
+	},
+	appearance = {
+		-- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+		-- Adjusts spacing to ensure icons are aligned
+		nerd_font_variant = "mono",
+	},
+	-- Default list of enabled providers defined so that you can extend it
+	-- elsewhere in your config, without redefining it, due to `opts_extend`
+	sources = {
+		default = { "lsp", "path", "snippets", "buffer" },
+	},
+
+	-- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
+	-- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
+	-- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
+	--
+	-- See the fuzzy documentation for more information
+	fuzzy = { implementation = "prefer_rust_with_warning" },
+	completion = {
+		-- The keyword should only matchh against the text before
+		keyword = { range = "prefix" },
+		menu = {
+			-- Use treesitter to highlight the label text for the given list of sources
+			draw = {
+				treesitter = { "lsp" },
+			},
+		},
+		-- Show completions after tying a trigger character, defined by the source
+		trigger = { show_on_trigger_character = true },
+		documentation = {
+			-- Show documentation automatically
+			auto_show = true,
+		},
+	},
+
+	-- Signature help when tying
+	signature = { enabled = true },
+})
+
 -- ########## DIAGNOSTICS ##########
 
 vim.diagnostic.config {
-  virtual_text = {true, virt_text_pos = 'eol'},
+  virtual_text = false,
+  virtual_lines = {
+    current_line = true,
+  },
   underline = true,
-  update_in_insert = true,
+  update_in_insert = false,
 }
 
 vim.cmd("colorscheme default")
 
 vim.api.nvim_set_hl(0, 'Normal', { bg = 'NONE' })
+
+vim.api.nvim_set_hl(0, "ModeMsg", { fg = '#000000', bg = "#89b4fa", bold = true })
