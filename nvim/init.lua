@@ -93,6 +93,34 @@ vim.keymap.set('n', '<C-n>', ':tabnew<CR>')
 vim.pack.add{
 	{ src = "https://github.com/saghen/blink.cmp", version = "v1", name = "blink.cmp" },
 	{ src = 'https://github.com/neovim/nvim-lspconfig' },
+	{ src = 'https://github.com/nvim-treesitter/nvim-treesitter',
+	config = function()
+      require('nvim-treesitter.configs').setup {
+        ensure_installed = {
+          "bash",
+          "c",
+          "json",
+          "lua",
+          "luadoc",
+          "markdown",
+          "markdown_inline",
+          "python",
+          "query",
+          "regex",
+          "doxygen",
+          "cpp"
+        },
+        folds = { enable = true },
+        auto_install = true,
+        auto_update = true,
+        highlight = {
+          enable = true,
+          additional_vim_regex_highlighting = false,
+        },
+        indent = { enable = true },
+      }
+    end,
+  },
 }
 
 -- ########## LSP ##########
@@ -201,5 +229,4 @@ vim.diagnostic.config {
 vim.cmd("colorscheme default")
 
 vim.api.nvim_set_hl(0, 'Normal', { bg = 'NONE' })
-
 vim.api.nvim_set_hl(0, "ModeMsg", { fg = '#000000', bg = "#89b4fa", bold = true })

@@ -12,3 +12,5 @@ vlc
 curl
 fzf
 ufw
+tree-sitter
+tree-sitter-cli
