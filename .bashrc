@@ -20,10 +20,12 @@ shopt -s checkwinsize
 
 ########## COLORS ##########
 
-export FOREGROUND_COLOR="#ffffff"
-export DISABLED_COLOR="#333333"
-export GIT_COLOR="#ffb703"
-export ACCENT_COLOR="#02c39a"
+export FOREGROUND_COLOR="#ffffff"	# White
+export DISABLED_COLOR="#333333"		# Gray
+export ACCENT_COLOR_1="#02c39a"		# Green (Primary)
+export ACCENT_COLOR_2="#edc240"		# Yellow
+export ACCENT_COLOR_3="#31bef6"		# Blue
+export ACCENT_COLOR_4="#ff7272"		# Red
 
 hex_to_ansi() {
     local hex="${1#\#}"
@@ -49,8 +51,8 @@ git_prompt() {
 }
 
 PS1_COLOR_PATH=$(hex_to_ansi "$FOREGROUND_COLOR")
-PS1_COLOR_GIT=$(hex_to_ansi "$GIT_COLOR")
-PS1_COLOR_ARROW=$(hex_to_ansi "$ACCENT_COLOR")
+PS1_COLOR_GIT=$(hex_to_ansi "$ACCENT_COLOR_2")
+PS1_COLOR_ARROW=$(hex_to_ansi "$ACCENT_COLOR_1")
 PS1_COLOR_RESET='\[\e[0m\]'
 PS1_COLOR_BOLD='\[\e[1m\]'
 PS1="\n${PS1_COLOR_BOLD}${PS1_COLOR_PATH}\w${PS1_COLOR_RESET}${PS1_COLOR_GIT}\$(git_prompt)${PS1_COLOR_RESET}${PS1_COLOR_BOLD}${PS1_COLOR_ARROW}  ${PS1_COLOR_RESET}"
@@ -65,13 +67,13 @@ export FZF_DEFAULT_OPTS="
 --separator='─'
 --scrollbar='│'
 --color=bg:-1,bg+:${DISABLED_COLOR}
---color=fg:${FOREGROUND_COLOR},fg+:${ACCENT_COLOR}
---color=hl:${ACCENT_COLOR},hl+:${ACCENT_COLOR}
---color=info:${ACCENT_COLOR}
---color=prompt:${ACCENT_COLOR}
---color=pointer:${ACCENT_COLOR}
---color=marker:${ACCENT_COLOR}
---color=spinner:${ACCENT_COLOR}
+--color=fg:${FOREGROUND_COLOR},fg+:${ACCENT_COLOR_1}
+--color=hl:${ACCENT_COLOR_1},hl+:${ACCENT_COLOR_1}
+--color=info:${ACCENT_COLOR_1}
+--color=prompt:${ACCENT_COLOR_1}
+--color=pointer:${ACCENT_COLOR_1}
+--color=marker:${ACCENT_COLOR_1}
+--color=spinner:${ACCENT_COLOR_1}
 --color=header:${DISABLED_COLOR}
 --color=border:${DISABLED_COLOR}
 --color=gutter:-1

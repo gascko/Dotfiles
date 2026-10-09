@@ -4,6 +4,7 @@ gh
 git
 curl
 cmake
+meld
 htop
 adb
 imagemagick
@@ -14,3 +15,5 @@ fzf
 ufw
 tree-sitter
 tree-sitter-cli
+valgrind
+gdb

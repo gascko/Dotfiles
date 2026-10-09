@@ -215,18 +215,43 @@ require("blink.cmp").setup({
 	signature = { enabled = true },
 })
 
+-- Auto format code on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+  callback = function()
+    local clients = vim.lsp.get_clients({ bufnr = 0 })
+
+    if #clients > 0 then
+      vim.lsp.buf.format()
+    end
+  end,
+})
+
 -- ########## DIAGNOSTICS ##########
 
-vim.diagnostic.config {
-  virtual_text = false,
-  virtual_lines = {
-    current_line = true,
-  },
-  underline = true,
-  update_in_insert = false,
-}
+vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+   callback = function()
+     vim.diagnostic.open_float(nil, { focus = false })
+   end
+})
 
-vim.cmd("colorscheme default")
+-- ########## COLORSCHEME ##########
+
+local FOREGROUND_COLOR = os.getenv("FOREGROUND_COLOR")	-- White
+local DISABLED_COLOR = os.getenv("DISABLED_COLOR")		-- Gray
+local ACCENT_COLOR_1 = os.getenv("ACCENT_COLOR_1")		-- Green
+local ACCENT_COLOR_2 = os.getenv("ACCENT_COLOR_2")		-- Yellow
+local ACCENT_COLOR_3 = os.getenv("ACCENT_COLOR_3")		-- Blue
+local ACCENT_COLOR_4 = os.getenv("ACCENT_COLOR_4")		-- Red
+
+vim.api.nvim_set_hl(0, "Normal", { fg = FOREGROUND_COLOR, bg = 'NONE' })
+vim.api.nvim_set_hl(0, "String", { fg = ACCENT_COLOR_1 })
+vim.api.nvim_set_hl(0, "Number", { fg = ACCENT_COLOR_2})
+vim.api.nvim_set_hl(0, "Function", { fg = ACCENT_COLOR_3, bold = true })
+vim.api.nvim_set_hl(0, "Keyword", { fg = ACCENT_COLOR_3, bold = true })
+vim.api.nvim_set_hl(0, "Statement", { fg = ACCENT_COLOR_3 })
+vim.api.nvim_set_hl(0, "Type", { fg = ACCENT_COLOR_1 })
+vim.api.nvim_set_hl(0, "Operator", { fg = ACCENT_COLOR_2 })
+vim.api.nvim_set_hl(0, "Identifier", { fg = ACCENT_COLOR_3 })
 
 vim.api.nvim_set_hl(0, 'Normal', { bg = 'NONE' })
-vim.api.nvim_set_hl(0, "ModeMsg", { fg = '#000000', bg = "#89b4fa", bold = true })
+vim.api.nvim_set_hl(0, "ModeMsg", { fg = '#000000', bg = ACCENT_COLOR_3, bold = true })
