@@ -57,3 +57,5 @@ sudo
 fprintd
 libpam-fprintd
 fwupd
+tree-sitter
+tree-sitter-cli
