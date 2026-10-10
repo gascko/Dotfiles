@@ -1,0 +1,53 @@
+[editor]
+line-number = "relative"
+cursorline = true
+scrolloff = 10
+
+# buffer/tab-like UI
+bufferline = "multiple"
+
+# completion
+auto-completion = true
+path-completion = true
+auto-info = true
+
+# format
+auto-format = true
+
+# UI
+popup-border = "all"
+
+gutters = [
+    "diagnostics",
+    "spacer",
+    "line-numbers",
+    "spacer",
+    "diff"
+]
+
+# indentation
+indent-heuristic = "hybrid"
+
+[editor.cursor-shape]
+normal = "bar"
+insert = "bar"
+select = "bar"
+
+[editor.lsp]
+enable = true
+auto-signature-help = true
+display-signature-help-docs = true
+snippets = true
+
+[editor.statusline]
+left = ["mode"]
+center = []
+right = []
+
+[keys.normal]
+C-s = ":write"
+gb = "jump_backward"
+G = "goto_last_line"
+
+[keys.insert]
+C-s = ":write"
