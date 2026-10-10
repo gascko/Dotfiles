@@ -92,8 +92,9 @@ vim.keymap.set('n', '<C-n>', ':tabnew<CR>')
 
 vim.pack.add{
 	{ src = "https://github.com/saghen/blink.cmp", version = "v1", name = "blink.cmp" },
-	{ src = 'https://github.com/neovim/nvim-lspconfig' },
-	{ src = 'https://github.com/nvim-treesitter/nvim-treesitter',
+	{ src = "https://github.com/neovim/nvim-lspconfig" },
+	{ src = "https://github.com/brenoprata10/nvim-highlight-colors"}
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter",
 	config = function()
       require('nvim-treesitter.configs').setup {
         ensure_installed = {
@@ -224,6 +225,11 @@ vim.api.nvim_create_autocmd("BufWritePre", {
       vim.lsp.buf.format()
     end
   end,
+})
+
+require('nvim-highlight-colors').setup({
+		render = 'virtual'
+		virtual_symbol = '⏺'
 })
 
 -- ########## DIAGNOSTICS ##########
