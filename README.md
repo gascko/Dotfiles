@@ -1,14 +1,43 @@
-# Dotfiles
+# Debian Gnome Dotfiles
 
-My Dotfiles from my `$HOME` 🏠
+> [!NOTE]
+> Setup installed with [Debian Netinstaller](https://www.debian.org/CD/netinst/)
 
-# Packages
+## Sudo and Git
+
+> [!NOTE]
+> Login as root
+
+```
+apt install sudo git
+```
+```
+usermod -aG sudo konrad
+```
+```
+reboot
+```
+
+## Packages
 
 ```
 xargs sudo apt -y install < ~/Dotfiles/packages
 ```
 
-# Font
+## Zsh
+
+```
+chsh -s $(which zsh)
+```
+
+## Dotfiles
+
+```
+cp -a *~/Dotfiles/ ~/.config/
+```
+
+
+## Font
 
 ```
 mkdir -p ~/.fonts
@@ -26,7 +55,7 @@ unzip ~/.fonts/*.zip
 fc-cache
 ```
 
-# UFW (Firewall)
+## Firewall
 
 ```
 sudo ufw default deny incoming
@@ -34,8 +63,36 @@ sudo ufw default allow outgoing
 sudo ufw enable
 ```
 
-# Other Tools
+## Grub
+
+```
+GRUB_TIMEOUT=0
+GRUB_CMDLINE_LINUX_DEFAULT="quit splash loglevel=3"
+```
+
+> /etc/default/grub
+
+```
+sudo update-grub2
+```
+
+## Helix
+
+> [!NOTE]
+> Check latest [Helix Version](https://github.com/helix-editor/helix/releases)
+
+```
+wget https://github.com/helix-editor/helix/releases/download/<VERSION>/helix_<VERSION>_amd64.deb
+```
+
+```
+cargo install uwu_colors
+```
+
+
+## Tools
 
 * [IntelliJ](https://www.jetbrains.com/idea/download/?section=linux)
 * [Anki](https://apps.ankiweb.net/)
 * [Tutanota](https://tuta.com/de#download)
+* [Spotify](https://www.spotify.com/us/download/linux/)
