@@ -57,5 +57,6 @@ sudo
 fprintd
 libpam-fprintd
 fwupd
+cargo
 tree-sitter
 tree-sitter-cli
