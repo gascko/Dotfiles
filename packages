@@ -1,6 +1,6 @@
 # Shell & Terminal
 zsh
-tmux 
+tmux
 alacritty
 
 # CLI-Tools
@@ -15,10 +15,10 @@ meld # -- Graphical git diff and merge tool
 git
 
 # Development
+hx
 build-essential
 valgrind
 gdb
-cargo # -- Rust Build / Paketmanager, needed for Helix Code Editor
 cmake
 clangd
 
