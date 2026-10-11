@@ -1,62 +1,85 @@
+# Shell & Terminal
 zsh
-tmux
+tmux 
 alacritty
-ffmpeg
+
+# CLI-Tools
 unzip
-gh
-git
-cmake
-btop
-adb
-imagemagick 
-clangd
-vlc
 curl
 fzf
-ufw
-cups
-libsane1
-meld
-simple-scan
+btop
+
+# Git
+gh
+meld # -- Graphical git diff and merge tool
+# git -- Not needed because allready installed by root
+
+# Development
+build-essential
 valgrind
 gdb
+cargo # -- Rust Build / Paketmanager, needed for Helix Code Editor
+cmake
+clangd
+
+# Multimedia
+ffmpeg # -- Audio / Video Manipulation
+imagemagick # -- Image manipulation
+vlc # -- Audio / Video Playback
+
+# Other
+adb # -- Android connection
+ufw # -- Firewall
+# sudo -- Not needed because allready installed by root
+
+# Printing & Scanning
+cups
+libsane1
+simple-scan
 printer-driver-all
-exfatprogs
-build-essential
-gnome-keyring
-epiphany-browser
-network-manager
+system-config-printer
+system-config-printer-udev
+
+# Filesystem
+exfatprogs # -- Creating and managing exFAT filesystems
+gnome-disk-utility
+
+# Gnome
 gnome-shell
 gnome-session
 gnome-settings-daemon
 gdm3
+gnome-control-center
 adwaita-icon-theme
 fonts-cantarell
 gsettings-desktop-schemas
-libpam-gnome-keyring
-glib-networking
 gnome-menus
-gvfs-backends
-gvfs-fuse
-pipewire-audio
-libcanberra-pulse
-libatk-adaptor
+glib-networking
+gvfs-backends # -- Virtual filesystem backend, convinient for Nautilus
+gvfs-fuse # -- Fuse Bridge for virtual filesystem backend, convinient for Nautilus
+pipewire-audio # -- Sound
+libcanberra-pulse # -- Sound
+libatk-adaptor # -- Accessibility
 libglib2.0-bin
-system-config-printer-common
-system-config-printer-udev
-evince
+libpam-gnome-keyring
+gnome-keyring
+fwupd # -- Firmware Update Service
+
+# Network
+network-manager
+
+# Software
+epiphany-browser # -- Browser
+loupe # -- Image preview
+nautilus # -- Filemanager
+evince # -- File preview
+gnome-calculator # -- Calculator
+gnome-snapshot # -- Camera
+
+# Bluetooth
 gnome-bluetooth-sendto
-gnome-calculator
-gnome-disk-utility
-gnome-snapshot
-loupe
-nautilus
-gnome-control-center
 bluez
-sudo
+
+# Fingerprint
 fprintd
 libpam-fprintd
-fwupd
-cargo
-tree-sitter
-tree-sitter-cli
