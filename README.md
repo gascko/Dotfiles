@@ -21,7 +21,7 @@ reboot
 ## Packages
 
 ```
-xargs sudo apt -y install < ~/Dotfiles/packages
+sed 's/#.*//' packages | xargs -r sudo apt install -y
 ```
 
 ## Zsh
