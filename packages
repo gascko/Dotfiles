@@ -12,7 +12,7 @@ btop
 # Git
 gh
 meld # -- Graphical git diff and merge tool
-# git -- Not needed because allready installed by root
+git
 
 # Development
 build-essential
