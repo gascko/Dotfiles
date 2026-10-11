@@ -3,19 +3,31 @@
 > [!NOTE]
 > Setup installed with [Debian Netinstaller](https://www.debian.org/CD/netinst/)
 
-## Sudo and Git
+## Sudo
 
 > [!NOTE]
 > Login as root
 
 ```
-apt install sudo git
+apt install sudo
 ```
 ```
-usermod -aG sudo konrad
+usermod -aG sudo <USERNAME>
 ```
 ```
 reboot
+```
+## Dotfiles
+
+> [!NOTE]
+> Login as user
+
+```
+git clone <REPOSITORY>
+```
+
+```
+cp -a *~/Dotfiles/ ~/.config/
 ```
 
 ## Packages
@@ -30,21 +42,17 @@ sed 's/#.*//' packages | xargs -r sudo apt install -y
 chsh -s $(which zsh)
 ```
 
-## Dotfiles
-
-```
-cp -a *~/Dotfiles/ ~/.config/
-```
-
-
 ## Font
 
 ```
 mkdir -p ~/.fonts
 ```
 
+> [!NOTE]
+> Check latest [Nerdfont Version](https://github.com/ryanoasis/nerd-fonts/releases)
+
 ```
-wget -P ~/.fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.5.0/JetBrainsMono.zip
+wget -P ~/.fonts https://github.com/ryanoasis/nerd-fonts/releases/download/<VERSION>/JetBrainsMono.zip
 ```
 
 ```
@@ -88,11 +96,3 @@ wget https://github.com/helix-editor/helix/releases/download/<VERSION>/helix_<VE
 ```
 cargo install uwu_colors
 ```
-
-
-## Tools
-
-* [IntelliJ](https://www.jetbrains.com/idea/download/?section=linux)
-* [Anki](https://apps.ankiweb.net/)
-* [Tutanota](https://tuta.com/de#download)
-* [Spotify](https://www.spotify.com/us/download/linux/)
