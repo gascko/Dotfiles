@@ -83,16 +83,3 @@ GRUB_CMDLINE_LINUX_DEFAULT="quit splash loglevel=3"
 ```
 sudo update-grub2
 ```
-
-## Helix
-
-> [!NOTE]
-> Check latest [Helix Version](https://github.com/helix-editor/helix/releases)
-
-```
-wget https://github.com/helix-editor/helix/releases/download/<VERSION>/helix_<VERSION>_amd64.deb
-```
-
-```
-cargo install uwu_colors
-```
