@@ -4,10 +4,10 @@
 
 ########## COLORS ##########
 
-TEXT_COLOR="#ffffff"
-PRIMARY_COLOR="#02c39a"
-SECONDARY_COLOR="#ffb703"
-DISABLED_COLOR="#666666"
+export TEXT_COLOR="#ffffff"
+export PRIMARY_COLOR="#02c39a"
+export SECONDARY_COLOR="#ffb703"
+export DISABLED_COLOR="#666666"
 
 ########## HISTORY ##########
 
@@ -79,5 +79,4 @@ add-zsh-hook precmd update_vcs_info
 
 setopt PROMPT_SUBST
 
-PROMPT='
-%B%F{$TEXT_COLOR}%~%f%b%F{$SECONDARY_COLOR}${vcs_info_msg_0_}%f%B%F{$PRIMARY_COLOR}  %f%b'
+PROMPT='%B%F{$TEXT_COLOR}%~%f%b%F{$SECONDARY_COLOR}${vcs_info_msg_0_}%f%B%F{$PRIMARY_COLOR}  %f%b'
