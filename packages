@@ -2,6 +2,7 @@
 zsh
 tmux
 alacritty
+fonts-jetbrains-mono
 
 # CLI-Tools
 unzip
