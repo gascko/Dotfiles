@@ -42,27 +42,6 @@ sed 's/#.*//' packages | xargs -r sudo apt install -y
 chsh -s $(which zsh)
 ```
 
-## Font
-
-```
-mkdir -p ~/.fonts
-```
-
-> [!NOTE]
-> Check latest [Nerdfont Version](https://github.com/ryanoasis/nerd-fonts/releases)
-
-```
-wget -P ~/.fonts https://github.com/ryanoasis/nerd-fonts/releases/download/<VERSION>/JetBrainsMono.zip
-```
-
-```
-unzip ~/.fonts/*.zip
-```
-
-```
-fc-cache
-```
-
 ## Firewall
 
 ```
