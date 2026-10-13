@@ -1,6 +1,0 @@
-[language-server.uwu-colors]
-command = "uwu_colors"
-
-[[language]]
-name = "c"
-language-servers = ["clangd", "uwu-colors"]

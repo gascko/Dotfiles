@@ -68,6 +68,7 @@ fwupd # -- Firmware Update Service
 
 # Network
 network-manager
+network-manager-gnome
 
 # Software
 epiphany-browser # -- Browser

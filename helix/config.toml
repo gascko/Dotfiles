@@ -46,7 +46,7 @@ right = []
 
 [keys.normal]
 C-s = ":write"
-gb = "jump_backward"
+g = { b = "jump_backward" }
 G = "goto_last_line"
 
 [keys.insert]
