@@ -3,13 +3,13 @@
 > [!NOTE]
 > Setup installed with [Debian Netinstaller](https://www.debian.org/CD/netinst/)
 
-## Sudo
+# Installation
 
 > [!NOTE]
 > Login as root
 
 ```
-apt install sudo
+apt install sudo git
 ```
 ```
 usermod -aG sudo <USERNAME>
@@ -17,7 +17,6 @@ usermod -aG sudo <USERNAME>
 ```
 reboot
 ```
-## Dotfiles
 
 > [!NOTE]
 > Login as user
@@ -25,40 +24,33 @@ reboot
 ```
 git clone <REPOSITORY>
 ```
-
-```
-cp -a *~/Dotfiles/ ~/.config/
-```
-
-## Packages
-
 ```
 sed 's/#.*//' packages | xargs -r sudo apt install -y
 ```
-
-## Zsh
-
+```
+mkdir ~/.config
+find ~/<DOTFILES_FOLDER>/ -mindepth 1 -maxdepth 1 -not -name '.*' -type d | xargs -I '{}' cp -r '{}' ~/.config/
+cp ~/Dotfiles-Gnome/.zshrc ~/
+```
 ```
 chsh -s $(which zsh)
 ```
-
-## Firewall
-
 ```
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
 sudo ufw enable
 ```
 
-## Grub
+> [!NOTE]
+> Write into /etc/default/grub
 
 ```
 GRUB_TIMEOUT=0
 GRUB_CMDLINE_LINUX_DEFAULT="quit splash loglevel=3"
 ```
-
-> /etc/default/grub
-
 ```
 sudo update-grub2
+```
+```
+sudo reboot
 ```
