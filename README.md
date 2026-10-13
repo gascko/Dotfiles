@@ -52,5 +52,6 @@ GRUB_CMDLINE_LINUX_DEFAULT="quit splash loglevel=3"
 sudo update-grub2
 ```
 ```
+sudo apt purge ifupdown
 sudo reboot
 ```
