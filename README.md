@@ -55,3 +55,22 @@ sudo update-grub2
 sudo apt purge ifupdown
 sudo reboot
 ```
+
+# Known Issues
+
+## Wifi not working
+
+> Remove Wifi from /etc/network/interfaces
+
+> [!NOTE]
+> Edit in /etc/NetworkManager/NetworkManager.conf
+
+```
+managed=true
+```
+
+## Fingerprint not working
+
+```
+fprintd-enroll
+```
