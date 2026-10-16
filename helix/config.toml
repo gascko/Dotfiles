@@ -1,8 +1,11 @@
+theme = "gruvbox"
+
 [editor]
 line-number = "relative"
 cursorline = true
 scrolloff = 10
-
+clipboard-provider = "wayland"
+default-yank-register = "+"
 # buffer/tab-like UI
 bufferline = "multiple"
 
@@ -39,13 +42,9 @@ auto-signature-help = true
 display-signature-help-docs = true
 snippets = true
 
-[editor.statusline]
-left = ["mode"]
-center = []
-right = []
-
 [keys.normal]
 C-s = ":write"
+C-n = ":new"
 g = { b = "jump_backward" }
 G = "goto_last_line"
 

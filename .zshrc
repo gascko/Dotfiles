@@ -43,12 +43,14 @@ zstyle ':completion:*' menu select
 
 ########## FZF ##########
 
+source <(fzf --zsh)
+
 export FZF_DEFAULT_OPTS="
 --height=40%
 --layout=reverse
 --border=rounded
 --info=inline-right
---prompt=' '
+--prompt='$ '
 --marker='✓'
 --separator='─'
 --scrollbar='│'
@@ -75,7 +77,13 @@ update_vcs_info() {
 
 add-zsh-hook precmd update_vcs_info
 
-########## PROMPT ##########
+########### TMUX ##########
+
+if [[ -z "$TMUX" ]]; then
+    tmux
+fi
+ 
+########### PROMPT ##########
 
 setopt PROMPT_SUBST
 

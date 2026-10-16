@@ -64,6 +64,7 @@ libatk-adaptor # -- Accessibility
 libglib2.0-bin
 libpam-gnome-keyring
 gnome-keyring
+wl-clipboard
 fwupd # -- Firmware Update Service
 
 # Network
