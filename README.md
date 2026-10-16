@@ -56,6 +56,11 @@ sudo apt purge ifupdown
 sudo reboot
 ```
 
+# Other Software
+
+* [ArtCraft: Image editing, vector illustration, video, photography, PDFs, motion graphics, page layout, interface design, word processing, audio, presentations, CAD and spreadsheets](https://getartcraft.com/apps)
+* [IntelliJ](https://www.jetbrains.com/idea/)
+
 # Known Issues
 
 ## Wifi not working
