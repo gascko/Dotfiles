@@ -1,9 +1,11 @@
 # Debian Gnome Dotfiles
 
-> [!NOTE]
-> Setup installed with [Debian Netinstaller](https://www.debian.org/CD/netinst/)
+![](example.png)
 
 # Installation
+
+> [!NOTE]
+> Setup installed with [Debian Netinstaller](https://www.debian.org/CD/netinst/)
 
 > [!NOTE]
 > Login as root
@@ -55,11 +57,6 @@ sudo update-grub2
 sudo apt purge ifupdown
 sudo reboot
 ```
-
-# Other Software
-
-* [ArtCraft: Image editing, vector illustration, video, photography, PDFs, motion graphics, page layout, interface design, word processing, audio, presentations, CAD and spreadsheets](https://getartcraft.com/apps)
-* [IntelliJ](https://www.jetbrains.com/idea/)
 
 # Known Issues
 
