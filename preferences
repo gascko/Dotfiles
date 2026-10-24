@@ -1,7 +1,0 @@
-Package: *
-Pin: release n=trixie
-Pin-Priority: 700
-
-Package: *
-Pin: release n=forky
-Pin-Priority: -10

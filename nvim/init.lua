@@ -86,30 +86,19 @@ vim.keymap.set('n', '<C-n>', ':tabnew<CR>')
 
 -- ########## PLUGINS ##########
 
-local deps = require("mini.deps")
-deps.setup({})
-deps.add({source = "neovim/nvim-lspconfig"})
-deps.add({source = "nvim-mini/mini.completion"})
-
--- Build in package manager in nvim version 0.12
-
---vim.pack.add({
---  { src = 'https://github.com/nvim-mini/mini.completion' },
---  { src = 'https://github.com/neovim/nvim-lspconfig' },
---})
+vim.pack.add{
+  { src = 'https://github.com/neovim/nvim-lspconfig' },
+}
 
 -- ########## LSP ##########
 
-require('mini.completion').setup()
-
 vim.lsp.enable('clangd')
-vim.lsp.enable('texlab')
 
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(ev)
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
     if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_completion) then
-      vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+      --vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
       vim.keymap.set('n', 'gD', function()
           vim.lsp.buf.declaration()
       end)
@@ -138,3 +127,5 @@ vim.diagnostic.config {
 }
 
 vim.cmd("colorscheme default")
+
+vim.api.nvim_set_hl(0, 'Normal', { bg = 'NONE' })

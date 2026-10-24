@@ -1,0 +1,13 @@
+[general]
+mode = gallery
+
+[keys.viewer]
+g = mode gallery
+Right = next_file
+Left = prev_file
+Up = first_file
+Down = last_file
+
+[keys.gallery]
+g = mode viewer
+Escape = mode viewer

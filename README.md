@@ -1,17 +1,17 @@
-![](screenshot.png)
+![](example.png)
 
 # Installation
 
 > [!NOTE]
 > Setup installed with [Debian Netinstaller](https://www.debian.org/CD/netinst/)
 
- ## Sudo
+## Sudo and Git
 
 > [!NOTE]
 > Login as root
 
 ```
-apt install sudo
+apt install sudo git
 ```
 ```
 usermod -aG sudo konrad
@@ -20,40 +20,32 @@ usermod -aG sudo konrad
 reboot
 ```
 
-## Packages
-
-```
-xargs sudo apt -y install < ~/Dotfiles/packages
-```
-
 ## Dotfiles
 
+> [!NOTE]
+> Login as user
+
 ```
-git clone https://github.com/gascko/Dotfiles.git ~/
+git clone https://github.com/gascko/Dotfiles-Wayland.git ~/Dotfiles
 ```
 ```
 cp ~/Dotfiles/.* ~/
 ```
 
-## Pinning
-
-> [!NOTE]
-> Check Release Name of **Stable** and **Testing** [Debian Release](https://www.debian.org/releases/) 
+## Packages
 
 ```
-echo "deb http://deb.debian.org/debian testing main contrib non-free" | sudo tee -a /etc/apt/sources.list
+xargs sudo apt -y install < ~/Dotfiles/packages
 ```
 ```
-sudo cp ~/Dotfiles/preferences /etc/apt/preferences
-```
-```
-sudo apt update
-```
-```
-xargs sudo apt -y install -t forky < ~/Dotfiles/pinning
+sudo reboot
 ```
 
 ## Network
+
+> Remove Wifi from /etc/network/interfaces
+
+> Remove dhcpcd package `sudo apt remove dhcpcd-base`
 
 ```
 managed=true
@@ -61,70 +53,89 @@ managed=true
 
 > /etc/NetworkManager/NetworkManager.conf
 
-## Neovim
+```
+[global-dns-domain-*]
+servers=185.228.168.168,185.228.169.168
 
-```
-mkdir -p ~/.local/share/nvim/site/pack/deps/start
-```
-```
-git clone https://github.com/nvim-mini/mini.deps ~/.local/share/nvim/site/pack/deps/start/mini.deps
-```
-```
-cp init.lua ~/.config/nvim/init.lua
+[global-dns]
+searches=family-filter-dns.cleanbrowsing.org
 ```
 
-## Suckless
+> /etc/NetworkManager/conf.d/dns.conf
+
+## Neovim (Editor)
 
 ```
-mkdir .config/suckless
-```
-```
-git clone https://git.suckless.org/dmenu ~/.config/suckless/dmenu
-```
-```
-git clone https://git.suckless.org/dwm ~/.config/suckless/dwm
-```
-```
-git clone https://git.suckless.org/slock ~/.config/suckless/slock
-```
-```
-cp ~/Dotfiles/dwm.c ~/.config/suckless/dwm/
-```
-```
-cp ~/Dotfiles/config_dwm.h ~/.config/suckless/dwm/config.h
-```
-```
-cp -r ~/Dotfiles/scripts/ ~/.config/suckless/dwm/
-```
-```
-cp ~/Dotfiles/config_dmenu.h ~/.config/suckless/dmenu/config.h
+cp -r ~/Dotfiles/nvim/ ~/.config/
 ```
 
-> [!NOTE]
-> sudo make install for all
-
-## Touchpad
-
 ```
-sudo cp ~/Dotfiles/40-libinput.conf /etc/X11/xorg.conf.d/40-libinput.conf
+git clone https://github.com/neovim/neovim ~/.config/nvim/
 ```
 
-## Firewall
+```
+make CMAKE_BUILD_TYPE=RelWithDebInfo
+sudo make install
+```
+
+## Dwl (Window Manager)
 
 ```
-sudo ufw enable
+git clone --branch 0.7 https://codeberg.org/dwl/dwl.git ~/.config/dwl/
 ```
+
 ```
-sudo ufw default deny incoming
+cp -r ~/Dotfiles/dwl/* ~/.config/
 ```
+
 ```
-sudo ufw default allow outgoing
+sudo make install
 ```
+
+> The `gaps` patch is already applied
+
+## Mew (Searchbar)
+
 ```
-sudo ufw allow DNS
+git clone https://codeberg.org/sewn/mew.git ~/.config/mew
 ```
+
 ```
-sudo ufw allow CUPS
+cp -r ~/Dotfiles/mew/* ~/.config/mew/
+```
+
+```
+make
+```
+
+```
+sudo make install
+```
+
+## Wlock (Screenlock)
+
+```
+git clone https://codeberg.org/sewn/wlock.git ~/.config/wlock
+```
+
+```
+make
+```
+
+```
+sudo make install
+```
+
+## Mako (Notifications)
+
+```
+cp -r ~/Dotfiles/mako/ ~/.config/
+```
+
+## Foot (Terminal)
+
+```
+cp -r ~/Dotfiles/foot/ ~/.config/
 ```
 
 ## Grub
@@ -139,11 +150,67 @@ set GRUB_TIMEOUT=0
 sudo update-grub2
 ```
 
-## Tutanota
+## Anki (Slidecards)
+
+> Check for new Version (Current 25.09)
 
 ```
-sudo wget https://app.tuta.com/desktop/tutanota-desktop-linux.AppImage -O /usr/bin/tutanota.AppImage
+wget https://github.com/ankitects/anki/releases/download/25.09/anki-launcher-25.09-linux.tar.zst
 ```
+
 ```
-sudo chmod +x /usr/bin/tutanota.AppImage
+unzstd anki-launcher-25.09-linux.tar.zst
+```
+
+```
+tar xaf anki-launcher-25.09-linux.tar
+```
+
+```
+./anki
+```
+
+```
+./install.sh
+```
+
+### Browser Darkmode
+
+```
+gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+```
+
+### Cron 
+
+**Battery Warning**
+
+```
+DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
+* * * * * /home/konrad/.config/dwl/scripts/checkBattery.sh
+```
+
+> `crontab -e`
+
+### Tutanota (Mail)
+
+```
+sudo wget https://app.tuta.com/desktop/tutanota-desktop-linux.AppImage -O /usr/local/bin/tutanota.AppImage
+```
+
+```
+sudo chmod +x /usr/local/bin/tutanota.AppImage
+```
+
+### Printing
+
+```
+sudo adduser konrad lpadmin 
+```
+
+> CUPS GUI at `http://localhost:631/admin`
+
+## Swayimg (Image Viewing)
+
+```
+cp -r ~/Dotfiles/swayimg/ ~/.config/
 ```
