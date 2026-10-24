@@ -1,88 +1,58 @@
-# Shell & Terminal
-zsh
-tmux
-alacritty
-fonts-jetbrains-mono
-
-# CLI-Tools
-unzip
-curl
-fzf
-btop
-
-# Git
+texlive
 gh
-meld # -- Graphical git diff and merge tool
-git
-
-# Development
-hx
-build-essential
-valgrind
-gdb
-cmake
-clangd
-
-# Multimedia
-ffmpeg # -- Audio / Video Manipulation
-imagemagick # -- Image manipulation
-vlc # -- Audio / Video Playback
-
-# Other
-adb # -- Android connection
-ufw # -- Firewall
-# sudo -- Not needed because allready installed by root
-
-# Printing & Scanning
-cups
-libsane1
-simple-scan
-printer-driver-all
-system-config-printer
-system-config-printer-udev
-
-# Filesystem
-exfatprogs # -- Creating and managing exFAT filesystems
-gnome-disk-utility
-
-# Gnome
-gnome-shell
-gnome-session
-gnome-settings-daemon
-gdm3
-gnome-control-center
-adwaita-icon-theme
-fonts-cantarell
-gsettings-desktop-schemas
-gnome-menus
-glib-networking
-gvfs-backends # -- Virtual filesystem backend, convinient for Nautilus
-gvfs-fuse # -- Fuse Bridge for virtual filesystem backend, convinient for Nautilus
-pipewire-audio # -- Sound
-libcanberra-pulse # -- Sound
-libatk-adaptor # -- Accessibility
-libglib2.0-bin
-libpam-gnome-keyring
-gnome-keyring
-wl-clipboard
-fwupd # -- Firmware Update Service
-
-# Network
+fuse
+libxrandr-dev
+xorg
+libfontconfig-dev
+xinit
+libx11-dev
 network-manager
-network-manager-gnome
-
-# Software
-epiphany-browser # -- Browser
-loupe # -- Image preview
-nautilus # -- Filemanager
-evince # -- File preview
-gnome-calculator # -- Calculator
-gnome-snapshot # -- Camera
-
-# Bluetooth
-gnome-bluetooth-sendto
-bluez
-
-# Fingerprint
-fprintd
-libpam-fprintd
+libxft-dev
+libxinerama-dev
+libfreetype-dev
+libssl-dev
+farbfeld
+xinput
+pipewire
+pipewire-audio
+pulsemixer
+ufw
+cups
+cups-filters
+printer-driver-all
+ipp-usb
+unzip
+gparted
+zlib1g-dev
+exfatprogs
+dosfstools
+system-config-printer
+mtools
+libavcodec-extra
+brightnessctl
+libbz2-dev
+libreadline-dev
+libsqlite3-dev
+build-essential
+tk-dev
+liblzma-dev
+xz-utils
+libncurses-dev
+libffi-dev
+libxml2-dev
+libxmlsec1-dev
+git
+curl
+ffmpeg
+cmake
+htop
+adb
+gettext
+imagemagick
+nsxiv
+clangd
+fonts-font-awesome
+xclip
+vlc
+zathura
+simple-scan
