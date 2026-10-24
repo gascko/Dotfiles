@@ -1,4 +1,3 @@
-# Debian Gnome Dotfiles
 
 ![](example.png)
 
